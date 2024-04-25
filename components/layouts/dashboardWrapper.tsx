@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 import { useShallow } from "zustand/react/shallow";
 import { CircleUser, Home, Menu, Package2 } from "lucide-react";
@@ -30,10 +31,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { usePathname } from "next/navigation";
 
 const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
+  const router = useRouter();
   const pathname = usePathname();
+
   const [data, getUser, logoutHandler] = useAuthStore(
     useShallow((state) => [state.data, state.getUser, state.logoutHandler]),
   );
@@ -46,6 +48,17 @@ const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     getUser();
   }, [getUser]);
+
+  useEffect(() => {
+    if (data?.data?.role === "User" && pathname.includes("admin")) {
+      router.push("/dashboard");
+    }
+
+    if (data?.data?.role === "Admin" && pathname.includes("superadmin")) {
+      router.push("/dashboard");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, pathname]);
 
   let sidebar = [] as any;
   switch (data?.data?.role) {
