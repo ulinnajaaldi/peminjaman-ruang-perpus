@@ -8,6 +8,12 @@ export const AlertDelete = dynamic(
 export const ActionBackToHome = dynamic(
   () => import("@/components/common/action-back-to-home"),
 );
+export const ActionChangeImage = dynamic(
+  () => import("@/components/common/action-change-image"),
+);
+export const ActionDetailDashboard = dynamic(
+  () => import("@/components/common/action-detail-dashboard"),
+);
 export const DataTableColumnAction = dynamic(
   () => import("@/components/common/data-table-column-action"),
 );
