@@ -1,4 +1,10 @@
-import { Users, LandPlot, ArrowLeftRight, UserRoundCog } from "lucide-react";
+import {
+  Users,
+  LandPlot,
+  ArrowLeftRight,
+  UserRoundCog,
+  PocketKnife,
+} from "lucide-react";
 import type { SidebarItem } from "@/types/DashboardTypes";
 
 export const ROUTES_PATH = {
@@ -17,6 +23,7 @@ export const ROUTES_PATH = {
   },
   dashboardAdmin: {
     home: "/dashboard",
+    sapras: "/dashboard/admin/sapras",
     ruangan: "/dashboard/admin/ruangan",
     ruanganAdd: "/dashboard/admin/ruangan/add",
     ruanganEdit: "/dashboard/admin/ruangan/edit",
@@ -31,6 +38,11 @@ export const SIDEBAR_SUPERADMIN: SidebarItem[] = [
     title: "Ruangan",
     icons: LandPlot,
     href: ROUTES_PATH.dashboardAdmin.ruangan,
+  },
+  {
+    title: "Sapras",
+    icons: PocketKnife,
+    href: ROUTES_PATH.dashboardAdmin.sapras,
   },
   {
     title: "Daftar Peminjaman",
@@ -54,6 +66,11 @@ export const SIDEBAR_ADMIN: SidebarItem[] = [
     title: "Ruangan",
     icons: LandPlot,
     href: ROUTES_PATH.dashboardAdmin.ruangan,
+  },
+  {
+    title: "Sapras",
+    icons: PocketKnife,
+    href: ROUTES_PATH.dashboardAdmin.sapras,
   },
   {
     title: "Daftar Peminjaman",
