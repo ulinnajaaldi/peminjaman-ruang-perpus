@@ -1,5 +1,5 @@
 import { IRuanganSchema } from "@/domain/Ruangan";
-import { axiosInstanceToken } from "@/lib/axios";
+import { axiosInstance, axiosInstanceToken } from "@/lib/axios";
 
 export const createRuangan = async (values: IRuanganSchema) => {
   const response = await axiosInstanceToken.post("/v1/api/ruangan", values);
@@ -34,6 +34,12 @@ export const getRuangan = async (
 
 export const getRuanganBySlug = async (slug: string) => {
   const response = await axiosInstanceToken.get(`/v1/api/ruangan/${slug}`);
+
+  return response.data;
+};
+
+export const getRuanganDetail = async (slug: string) => {
+  const response = await axiosInstance.get(`/v1/api/ruangan/${slug}/detail`);
 
   return response.data;
 };

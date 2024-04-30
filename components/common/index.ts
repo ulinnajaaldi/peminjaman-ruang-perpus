@@ -11,6 +11,9 @@ export const ActionBackToHome = dynamic(
 export const ActionChangeImage = dynamic(
   () => import("@/components/common/action-change-image"),
 );
+export const BlurImage = dynamic(
+  () => import("@/components/common/blur-image"),
+);
 export const ActionDetailDashboard = dynamic(
   () => import("@/components/common/action-detail-dashboard"),
 );

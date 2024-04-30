@@ -1,3 +1,5 @@
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { toast } from "sonner";
 import { ROUTES_PATH } from "@/constants/routes";
 import { IRuanganSchema } from "@/domain/Ruangan";
 import {
@@ -5,10 +7,9 @@ import {
   deleteRuangan,
   getRuangan,
   getRuanganBySlug,
+  getRuanganDetail,
   updateRuangan,
 } from "@/services/RuanganServices";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { toast } from "sonner";
 
 export const useCreateRuangan = (
   description: string,
@@ -78,6 +79,13 @@ export const useGetRuanganBySlug = (slug: string) => {
   return useQuery({
     queryKey: ["ruangan", slug],
     queryFn: () => getRuanganBySlug(slug),
+  });
+};
+
+export const useGetRuanganDetail = (slug: string) => {
+  return useQuery({
+    queryKey: ["ruangan-detail", slug],
+    queryFn: () => getRuanganDetail(slug),
   });
 };
 

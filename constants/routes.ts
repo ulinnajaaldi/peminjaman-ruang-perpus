@@ -11,6 +11,8 @@ export const ROUTES_PATH = {
   home: "/",
   register: "/auth/register",
   login: "/auth/login",
+  ruangan: "/ruangan",
+  tentang: "/tentang",
   dashboard: {
     home: "/dashboard",
     ruangan: "/dashboard/ruangan",
