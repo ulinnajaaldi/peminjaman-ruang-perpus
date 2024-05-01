@@ -2,29 +2,34 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useShallow } from "zustand/react/shallow";
+import { CircleUser, Menu } from "lucide-react";
 
 import { ROUTES_PATH } from "@/constants/routes";
 import useAuthStore from "@/hook/useAuth";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
-  SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
-import { usePathname } from "next/navigation";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
   const pathname = usePathname();
 
-  const [data, getUser] = useAuthStore(
-    useShallow((state) => [state.data, state.getUser]),
+  const [data, getUser, logoutHandler] = useAuthStore(
+    useShallow((state) => [state.data, state.getUser, state.logoutHandler]),
   );
 
   const [isActive, setIsActive] = useState("");
@@ -73,13 +78,45 @@ const Navbar = () => {
               ))}
             </div>
           </div>
-          <Button variant="outline" asChild>
-            {data !== null ? (
-              <Link href={ROUTES_PATH.dashboard.home}>Dashboard</Link>
-            ) : (
+          {data !== null ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="secondary"
+                  size="icon"
+                  className="rounded-full"
+                >
+                  <CircleUser className="h-5 w-5" />
+                  <span className="sr-only">Toggle user menu</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuLabel>
+                  {data?.data?.firstName} {data?.data?.lastName} <br />
+                  <span className="text-sm font-normal">
+                    {data?.data?.email}
+                  </span>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link href={ROUTES_PATH.dashboardUser.home}>Dashboard</Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <button
+                    onClick={logoutHandler}
+                    className="w-full cursor-pointer"
+                  >
+                    Logout
+                  </button>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <Button variant="outline" asChild>
               <Link href={ROUTES_PATH.login}>Login</Link>
-            )}
-          </Button>
+            </Button>
+          )}
         </div>
         <div className="flex items-center justify-between py-2 md:hidden">
           <div>
@@ -109,7 +146,7 @@ const Navbar = () => {
               </div>
               <Button variant="outline" asChild className="mt-5">
                 {data !== null ? (
-                  <Link href={ROUTES_PATH.dashboard.home}>Dashboard</Link>
+                  <Link href={ROUTES_PATH.dashboardUser.home}>Dashboard</Link>
                 ) : (
                   <Link href={ROUTES_PATH.login}>Login</Link>
                 )}

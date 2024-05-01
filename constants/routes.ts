@@ -4,6 +4,7 @@ import {
   ArrowLeftRight,
   UserRoundCog,
   PocketKnife,
+  Home,
 } from "lucide-react";
 import type { SidebarItem } from "@/types/DashboardTypes";
 
@@ -13,18 +14,16 @@ export const ROUTES_PATH = {
   login: "/auth/login",
   ruangan: "/ruangan",
   tentang: "/tentang",
-  dashboard: {
-    home: "/dashboard",
-    ruangan: "/dashboard/ruangan",
-    daftarPeminjaman: "/dashboard/daftar-peminjaman",
-    peminjaman: "/dashboard/peminjaman",
+  dashboardUser: {
+    home: "/dashboard/user",
+    daftarPinjaman: "/dashboard/user/daftar-pinjaman",
   },
   dashboardSuperAdmin: {
-    home: "/dashboard",
+    home: "/dashboard/superadmin",
     manageAdmins: "/dashboard/superadmin/manage-admins",
   },
   dashboardAdmin: {
-    home: "/dashboard",
+    home: "/dashboard/admin",
     sapras: "/dashboard/admin/sapras",
     ruangan: "/dashboard/admin/ruangan",
     ruanganAdd: "/dashboard/admin/ruangan/add",
@@ -36,6 +35,11 @@ export const ROUTES_PATH = {
 };
 
 export const SIDEBAR_SUPERADMIN: SidebarItem[] = [
+  {
+    title: "Dashboard",
+    icons: Home,
+    href: ROUTES_PATH.dashboardSuperAdmin.home,
+  },
   {
     title: "Ruangan",
     icons: LandPlot,
@@ -65,6 +69,11 @@ export const SIDEBAR_SUPERADMIN: SidebarItem[] = [
 
 export const SIDEBAR_ADMIN: SidebarItem[] = [
   {
+    title: "Dashboard",
+    icons: Home,
+    href: ROUTES_PATH.dashboardAdmin.home,
+  },
+  {
     title: "Ruangan",
     icons: LandPlot,
     href: ROUTES_PATH.dashboardAdmin.ruangan,
@@ -88,8 +97,13 @@ export const SIDEBAR_ADMIN: SidebarItem[] = [
 
 export const SIDEBAR_USER: SidebarItem[] = [
   {
-    title: "Daftar Peminjaman",
+    title: "Dashboard",
+    icons: Home,
+    href: ROUTES_PATH.dashboardUser.home,
+  },
+  {
+    title: "Daftar Pinjaman",
     icons: ArrowLeftRight,
-    href: ROUTES_PATH.dashboard.peminjaman,
+    href: ROUTES_PATH.dashboardUser.daftarPinjaman,
   },
 ];

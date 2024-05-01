@@ -1,14 +1,14 @@
 import React from "react";
 import { Metadata } from "next";
 
-import DashboardHomeFeature from "@/features/Dashboard/Home";
+import DashboardUserFeature from "@/features/Dashboard/User/Dashboard";
 
 export const metadata: Metadata = {
-  title: "Dashboard",
+  title: "Dashboard User",
 };
 
 const DashboardHome = () => {
-  return <DashboardHomeFeature />;
+  return <DashboardUserFeature />;
 };
 
 export default DashboardHome;

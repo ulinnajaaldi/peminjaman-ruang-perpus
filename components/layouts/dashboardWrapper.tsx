@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 import { useShallow } from "zustand/react/shallow";
-import { CircleUser, Home, Menu, Package2 } from "lucide-react";
+import { CircleUser, Menu, Package2 } from "lucide-react";
 
 import useAuthStore from "@/hook/useAuth";
 import { SidebarItem } from "@/types/DashboardTypes";
@@ -39,7 +39,7 @@ const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
   const [data, getUser, logoutHandler] = useAuthStore(
     useShallow((state) => [state.data, state.getUser, state.logoutHandler]),
   );
-  const [isActive, setIsActive] = useState("/dashboard");
+  const [isActive, setIsActive] = useState("");
 
   useEffect(() => {
     setIsActive(pathname);
@@ -51,11 +51,13 @@ const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     if (data?.data?.role === "User" && pathname.includes("admin")) {
-      router.push("/dashboard");
+      router.push("/dashboard/user");
     }
-
     if (data?.data?.role === "Admin" && pathname.includes("superadmin")) {
-      router.push("/dashboard");
+      router.push("/dashboard/admin");
+    }
+    if (data?.data?.role === "Superadmin" && pathname.includes("user")) {
+      router.push("/dashboard/superadmin");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, pathname]);
@@ -87,15 +89,6 @@ const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
           </div>
           <div className="flex-1">
             <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-              <Link
-                href={ROUTES_PATH.dashboard.home}
-                className={`flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary ${
-                  isActive === "/dashboard" ? "bg-muted" : ""
-                }`}
-              >
-                <Home className="h-4 w-4" />
-                Dashboard
-              </Link>
               {sidebar?.map((item: SidebarItem, index: number) => (
                 <Link
                   key={index}
@@ -120,8 +113,8 @@ const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-2 pt-0 md:p-4 md:pt-0">
-                <Button size="sm" className="w-full">
-                  Daftar Ruangan
+                <Button size="sm" className="w-full" asChild>
+                  <Link href={ROUTES_PATH.ruangan}>Daftar Ruangan</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -150,15 +143,6 @@ const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
                   <Package2 className="h-6 w-6" />
                   <span className="sr-only">Peminjaman Ruang Perpus UMS</span>
                 </Link>
-                <Link
-                  href={ROUTES_PATH.dashboard.home}
-                  className={`mx-[-0.65rem] mt-5 flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground ${
-                    isActive === "/dashboard" ? "bg-muted" : ""
-                  }`}
-                >
-                  <Home className="h-5 w-5" />
-                  Dashboard
-                </Link>
                 {sidebar?.map((item: SidebarItem, index: number) => (
                   <Link
                     key={index}
@@ -182,8 +166,8 @@ const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <Button size="sm" className="w-full">
-                      Daftar Ruangan
+                    <Button size="sm" className="w-full" asChild>
+                      <Link href={ROUTES_PATH.ruangan}>Daftar Ruangan</Link>
                     </Button>
                   </CardContent>
                 </Card>
