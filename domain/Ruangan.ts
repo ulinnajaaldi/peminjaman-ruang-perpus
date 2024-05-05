@@ -12,3 +12,18 @@ export const RuanganSchema = z.object({
 });
 
 export type IRuanganSchema = z.infer<typeof RuanganSchema>;
+
+export const DetailPeminjamanRuanganSchema = z.object({
+  idRuangan: z.string().optional(),
+  idProsessPinjam: z.string().optional(),
+  date: z.date(),
+  startHour: z.string(),
+  endHour: z.string(),
+  people: z.string(),
+  necessity: z.string(),
+  additional: z.string(),
+});
+
+export type IDetailPeminjamanRuanganSchema = z.infer<
+  typeof DetailPeminjamanRuanganSchema
+>;

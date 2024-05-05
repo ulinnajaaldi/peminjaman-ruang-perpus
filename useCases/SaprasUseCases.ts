@@ -96,3 +96,9 @@ export const useDeleteSapras = (
     },
   });
 };
+
+export const useMutateAllSapras = () => {
+  return useMutation({
+    mutationFn: async () => getAllSapras(1, 20, ""),
+  });
+};

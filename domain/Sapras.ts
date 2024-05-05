@@ -9,3 +9,12 @@ export const SaprasSchema = z.object({
 });
 
 export type ISaprasSchema = z.infer<typeof SaprasSchema>;
+
+export const SaprasPeminjamanSchema = z.object({
+  idSapras: z.string().optional(),
+  idRuangan: z.string().optional(),
+  idProsessPinjam: z.string().optional(),
+  quantity: z.string(),
+});
+
+export type ISaprasPeminjamanSchema = z.infer<typeof SaprasPeminjamanSchema>;
