@@ -1,7 +1,11 @@
 {
-  "name": "fe-peminjaman-ruang-perpus",
+  "name": "peminjaman-ruang-perpus",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Aldilla Ulinnaja",
+    "email": "ulinnajaaldi24@gmail.com"
+  },
   "scripts": {
     "dev": "next dev",
     "dev-turbo": "next dev --turbo",
