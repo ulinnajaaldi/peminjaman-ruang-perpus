@@ -56,9 +56,6 @@ const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
     if (data?.data?.role === "Admin" && pathname.includes("superadmin")) {
       router.push("/dashboard/admin");
     }
-    if (data?.data?.role === "Superadmin" && pathname.includes("user")) {
-      router.push("/dashboard/superadmin");
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, pathname]);
 

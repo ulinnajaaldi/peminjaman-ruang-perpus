@@ -41,6 +41,11 @@ export const SIDEBAR_SUPERADMIN: SidebarItem[] = [
     href: ROUTES_PATH.dashboardSuperAdmin.home,
   },
   {
+    title: "Daftar Peminjaman",
+    icons: ArrowLeftRight,
+    href: ROUTES_PATH.dashboardAdmin.daftarPeminjaman,
+  },
+  {
     title: "Ruangan",
     icons: LandPlot,
     href: ROUTES_PATH.dashboardAdmin.ruangan,
@@ -49,11 +54,6 @@ export const SIDEBAR_SUPERADMIN: SidebarItem[] = [
     title: "Sapras",
     icons: PocketKnife,
     href: ROUTES_PATH.dashboardAdmin.sapras,
-  },
-  {
-    title: "Daftar Peminjaman",
-    icons: ArrowLeftRight,
-    href: ROUTES_PATH.dashboardAdmin.daftarPeminjaman,
   },
   {
     title: "Manage Users",
@@ -74,6 +74,11 @@ export const SIDEBAR_ADMIN: SidebarItem[] = [
     href: ROUTES_PATH.dashboardAdmin.home,
   },
   {
+    title: "Daftar Peminjaman",
+    icons: ArrowLeftRight,
+    href: ROUTES_PATH.dashboardAdmin.daftarPeminjaman,
+  },
+  {
     title: "Ruangan",
     icons: LandPlot,
     href: ROUTES_PATH.dashboardAdmin.ruangan,
@@ -82,11 +87,6 @@ export const SIDEBAR_ADMIN: SidebarItem[] = [
     title: "Sapras",
     icons: PocketKnife,
     href: ROUTES_PATH.dashboardAdmin.sapras,
-  },
-  {
-    title: "Daftar Peminjaman",
-    icons: ArrowLeftRight,
-    href: ROUTES_PATH.dashboardAdmin.daftarPeminjaman,
   },
   {
     title: "Manage Users",
