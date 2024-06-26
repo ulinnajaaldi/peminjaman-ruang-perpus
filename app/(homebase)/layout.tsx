@@ -14,7 +14,7 @@ export default function HomebaseLayout({
       <NextTopLoader showSpinner={false} />
       <Navbar />
       <div className="">{children}</div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

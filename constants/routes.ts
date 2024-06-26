@@ -14,6 +14,7 @@ export const ROUTES_PATH = {
   login: "/auth/login",
   ruangan: "/ruangan",
   tentang: "/tentang",
+  dashboard: "/dashboard",
   dashboardUser: {
     home: "/dashboard/user",
     daftarPinjaman: "/dashboard/user/daftar-pinjaman",
@@ -35,11 +36,6 @@ export const ROUTES_PATH = {
 };
 
 export const SIDEBAR_SUPERADMIN: SidebarItem[] = [
-  {
-    title: "Dashboard",
-    icons: Home,
-    href: ROUTES_PATH.dashboardSuperAdmin.home,
-  },
   {
     title: "Daftar Peminjaman",
     icons: ArrowLeftRight,
@@ -69,11 +65,6 @@ export const SIDEBAR_SUPERADMIN: SidebarItem[] = [
 
 export const SIDEBAR_ADMIN: SidebarItem[] = [
   {
-    title: "Dashboard",
-    icons: Home,
-    href: ROUTES_PATH.dashboardAdmin.home,
-  },
-  {
     title: "Daftar Peminjaman",
     icons: ArrowLeftRight,
     href: ROUTES_PATH.dashboardAdmin.daftarPeminjaman,
@@ -96,11 +87,6 @@ export const SIDEBAR_ADMIN: SidebarItem[] = [
 ];
 
 export const SIDEBAR_USER: SidebarItem[] = [
-  {
-    title: "Dashboard",
-    icons: Home,
-    href: ROUTES_PATH.dashboardUser.home,
-  },
   {
     title: "Daftar Pinjaman",
     icons: ArrowLeftRight,

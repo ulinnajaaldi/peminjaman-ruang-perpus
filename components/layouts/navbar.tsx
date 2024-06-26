@@ -99,7 +99,7 @@ const Navbar = () => {
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
-                  <Link href={ROUTES_PATH.dashboardUser.home}>Dashboard</Link>
+                  <Link href={ROUTES_PATH.dashboard}>Dashboard</Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
@@ -146,7 +146,7 @@ const Navbar = () => {
               </div>
               <Button variant="outline" asChild className="mt-5">
                 {data !== null ? (
-                  <Link href={ROUTES_PATH.dashboardUser.home}>Dashboard</Link>
+                  <Link href={ROUTES_PATH.dashboard}>Dashboard</Link>
                 ) : (
                   <Link href={ROUTES_PATH.login}>Login</Link>
                 )}

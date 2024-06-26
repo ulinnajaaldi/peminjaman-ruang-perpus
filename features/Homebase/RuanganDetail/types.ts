@@ -21,4 +21,8 @@ export interface DialogForm {
   saranaForm: any;
   setSaranaForm: React.Dispatch<any>;
   form: UseFormReturn<IDetailPeminjamanRuanganSchema, any, undefined>;
+  handleCheckKetersediaan: () => void;
+  isPendingCheck: boolean;
+  checkRuangan: boolean;
+  setCheckRuangan: React.Dispatch<SetStateAction<boolean>>;
 }

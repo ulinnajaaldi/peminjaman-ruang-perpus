@@ -130,33 +130,51 @@ const UserDaftarPinjamanFeature = () => {
             <p className="text-xs sm:text-sm md:text-base">
               Kebutuhan : {selectedData?.detailPeminjamanRuangan[0]?.necessity}
             </p>
-            <p className="text-xs sm:text-sm md:text-base">
-              Tambahan Lain :{" "}
-              {selectedData?.detailPeminjamanRuangan[0]?.additional}
-            </p>
-            <div>
-              <p className="text-sm md:text-base">Sapras yang dipinjam: </p>
-              <div className="mt-1 grid grid-cols-2 md:grid-cols-3">
-                {selectedData?.detailPeminjamanRuangan[0]?.saprasPeminjaman.map(
-                  (item: any, index: number) => (
-                    <div
-                      key={index}
-                      className="flex flex-col items-center gap-3 rounded-lg border p-2"
-                    >
-                      <Image
-                        src={item.sapras.images}
-                        alt={item.sapras.name}
-                        width="100"
-                        height="100"
-                      />
-                      <p className="text-xs sm:text-sm">
-                        Jumlah dipinjam {item.quantity} item
-                      </p>
-                    </div>
-                  ),
-                )}
+            {selectedData?.detailPeminjamanRuangan[0]?.additional && (
+              <p className="text-xs sm:text-sm md:text-base">
+                Tambahan Lain :{" "}
+                {selectedData?.detailPeminjamanRuangan[0]?.additional}
+              </p>
+            )}
+            {selectedData?.detailPeminjamanRuangan[0]?.letterLink && (
+              <p className="text-xs sm:text-sm md:text-base">
+                Link Surat Peminjaman :{" "}
+                <a
+                  href={selectedData?.detailPeminjamanRuangan[0]?.letterLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-blue-500 hover:underline"
+                >
+                  {selectedData?.detailPeminjamanRuangan[0]?.letterLink}
+                </a>
+              </p>
+            )}
+            {selectedData?.detailPeminjamanRuangan[0]?.saprasPeminjaman.length >
+              0 && (
+              <div>
+                <p className="text-sm md:text-base">Sapras yang dipinjam: </p>
+                <div className="mt-1 grid grid-cols-2 md:grid-cols-3">
+                  {selectedData?.detailPeminjamanRuangan[0]?.saprasPeminjaman.map(
+                    (item: any, index: number) => (
+                      <div
+                        key={index}
+                        className="flex flex-col items-center gap-3 rounded-lg border p-2"
+                      >
+                        <Image
+                          src={item.sapras.images}
+                          alt={item.sapras.name}
+                          width="100"
+                          height="100"
+                        />
+                        <p className="text-xs sm:text-sm">
+                          Jumlah dipinjam {item.quantity} item
+                        </p>
+                      </div>
+                    ),
+                  )}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </DialogContent>
       </Dialog>
