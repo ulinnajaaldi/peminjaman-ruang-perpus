@@ -21,7 +21,8 @@ export const DetailPeminjamanRuanganSchema = z.object({
   endHour: z.string(),
   people: z.string(),
   necessity: z.string(),
-  additional: z.string(),
+  additional: z.string().optional(),
+  letterLink: z.string().optional(),
 });
 
 export type IDetailPeminjamanRuanganSchema = z.infer<

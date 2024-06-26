@@ -24,6 +24,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import Image from "next/image";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -63,7 +64,12 @@ const Navbar = () => {
         <div className="hidden items-center justify-between py-3 md:flex">
           <div className="flex items-center justify-center gap-32">
             <div>
-              <h1 className="font-bold">Logo</h1>
+              <Image
+                src="/images/perpus-ums-logo.png"
+                alt="Perpus UMS Logo"
+                width={80}
+                height={80}
+              />
             </div>
             <div className="flex items-center justify-center gap-8">
               {NAVBAR_MENU.map((menu, index) => (
@@ -99,7 +105,7 @@ const Navbar = () => {
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
-                  <Link href={ROUTES_PATH.dashboardUser.home}>Dashboard</Link>
+                  <Link href={ROUTES_PATH.dashboard}>Dashboard</Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
@@ -120,7 +126,12 @@ const Navbar = () => {
         </div>
         <div className="flex items-center justify-between py-2 md:hidden">
           <div>
-            <h1 className="font-bold">Logo</h1>
+            <Image
+              src="/images/perpus-ums-logo.png"
+              alt="Perpus UMS Logo"
+              width={50}
+              height={50}
+            />
           </div>
           <Sheet>
             <SheetTrigger asChild>
@@ -130,7 +141,16 @@ const Navbar = () => {
             </SheetTrigger>
             <SheetContent side="left">
               <SheetHeader>
-                <SheetTitle>Logo</SheetTitle>
+                <SheetTitle>
+                  <div>
+                    <Image
+                      src="/images/perpus-ums-logo.png"
+                      alt="Perpus UMS Logo"
+                      width={100}
+                      height={100}
+                    />
+                  </div>
+                </SheetTitle>
               </SheetHeader>
               <div className="mt-3 flex flex-col gap-2">
                 {NAVBAR_MENU.map((menu, index) => (
@@ -146,7 +166,7 @@ const Navbar = () => {
               </div>
               <Button variant="outline" asChild className="mt-5">
                 {data !== null ? (
-                  <Link href={ROUTES_PATH.dashboardUser.home}>Dashboard</Link>
+                  <Link href={ROUTES_PATH.dashboard}>Dashboard</Link>
                 ) : (
                   <Link href={ROUTES_PATH.login}>Login</Link>
                 )}

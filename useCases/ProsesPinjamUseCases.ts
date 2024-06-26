@@ -15,6 +15,7 @@ import {
   daftarPinjamUser,
   detailPeminjamRuang,
   prosesPeminjamanRuangan,
+  prosesPinjamCheckPeminjaman,
   rejectDaftarPinjamUser,
   rejectProsesPinjam,
 } from "@/services/ProsesPinjamServices";
@@ -129,6 +130,35 @@ export const useProsesPeminjamanRuangan = (
     },
     onError: () => {
       toast.error("Gagal meminjam ruangan");
+    },
+  });
+};
+
+export const useProsesPinjamCheckPeminjaman = (
+  idRuangan: string,
+  date: Date,
+  startHour: string,
+  endHour: string,
+  setCheckKetersediaan: React.Dispatch<React.SetStateAction<boolean>>,
+) => {
+  return useMutation({
+    mutationFn: async () => {
+      const response = await prosesPinjamCheckPeminjaman(
+        idRuangan,
+        date,
+        startHour,
+        endHour,
+      );
+      return response;
+    },
+    onSuccess: (data) => {
+      if (data?.data === true) {
+        toast.info(data?.message);
+        setCheckKetersediaan(true);
+      } else {
+        toast.error(data?.message);
+        setCheckKetersediaan(false);
+      }
     },
   });
 };

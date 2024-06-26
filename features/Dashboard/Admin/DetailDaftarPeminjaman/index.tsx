@@ -30,6 +30,13 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableFooter,
+  TableRow,
+} from "@/components/ui/table";
 import useDetailDaftarPeminjamanFeature from "./hook";
 
 const DaftarPeminjamanDetailFeature = ({
@@ -69,35 +76,32 @@ const DaftarPeminjamanDetailFeature = ({
           <h1 className="text-2xl font-semibold text-gray-800">
             Detail Peminjaman Ruangan
           </h1>
-          <h3 className={cn(`${statusColor(data?.data.status)} font-medium`)}>
-            Status <span>{data?.data.status}</span>
-          </h3>
-          <div className="flex gap-10">
-            <div className="space-y-3 font-medium text-gray-600">
-              <p>Nama Peminjam</p>
-              <p>Email</p>
-              <p>Ruang yang dipinjam</p>
-              <p>Tanggal Peminjaman</p>
-              <p>Jam Peminjaman</p>
-              <p>Jumlah Orang</p>
-              <p>Keperluan</p>
-              <p>Tambahan lain</p>
-              <p>Sapras yang dipinjam</p>
-            </div>
-            <div className="space-y-3 text-gray-800">
-              <p>
-                : {data?.data.user.firstName} {data?.data.user.lastName}
-              </p>
-              <p>: {data?.data.user.email}</p>
-              <p>
-                :{" "}
-                <span className="font-semibold">
+          <Table>
+            <TableBody>
+              <TableRow>
+                <TableCell className="font-medium">Nama Peminjam</TableCell>
+                <TableCell>
+                  {data?.data.user.firstName} {data?.data.user.lastName}
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-medium">Email</TableCell>
+                <TableCell>{data?.data.user.email}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-medium">
+                  Ruang yang dipinjam
+                </TableCell>
+                <TableCell>
                   {data?.data.detailPeminjamanRuangan[0].ruangan}
-                </span>
-              </p>
-              <p>
-                :{" "}
-                <span className="font-semibold">
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-medium">
+                  Tanggal Peminjaman
+                </TableCell>
+                <TableCell>
+                  {" "}
                   {new Date(
                     data?.data.detailPeminjamanRuangan[0].date,
                   ).toLocaleDateString("id-ID", {
@@ -106,21 +110,52 @@ const DaftarPeminjamanDetailFeature = ({
                     day: "numeric",
                     weekday: "long",
                   })}
-                </span>
-              </p>
-              <p>
-                :{" "}
-                <span className="font-semibold">
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-medium">Jam Peminjaman</TableCell>
+                <TableCell>
+                  {" "}
                   {data?.data.detailPeminjamanRuangan[0].startHour} -{" "}
                   {data?.data.detailPeminjamanRuangan[0].endHour}
-                </span>
-              </p>
-              <p>: {data?.data.detailPeminjamanRuangan[0].people} Orang</p>
-              <p>: {data?.data.detailPeminjamanRuangan[0].necessity}</p>
-              <p>: {data?.data.detailPeminjamanRuangan[0].additional}</p>
-              <div className="flex gap-1">
-                :
-                <div className="flex flex-col">
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-medium">Jumlah Orang</TableCell>
+                <TableCell>
+                  {data?.data.detailPeminjamanRuangan[0].people} Orang
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-medium">Keperluan</TableCell>
+                <TableCell>
+                  {data?.data.detailPeminjamanRuangan[0].necessity}
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-medium">Tambahan lain</TableCell>
+                <TableCell>
+                  {data?.data.detailPeminjamanRuangan[0].additional}
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-medium">Surat Peminjaman</TableCell>
+                <TableCell>
+                  <a
+                    href={data?.data.detailPeminjamanRuangan[0].letterLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-blue-500 hover:underline"
+                  >
+                    {data?.data.detailPeminjamanRuangan[0].letterLink}
+                  </a>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-medium">
+                  Sapras yang dipinjam
+                </TableCell>
+                <TableCell>
                   {data?.data?.detailPeminjamanRuangan[0].saprasPeminjaman
                     .length > 0 ? (
                     data?.data?.detailPeminjamanRuangan[0].saprasPeminjaman.map(
@@ -133,10 +168,26 @@ const DaftarPeminjamanDetailFeature = ({
                   ) : (
                     <span className="text-gray-500">-</span>
                   )}
-                </div>
-              </div>
-            </div>
-          </div>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+            <TableFooter>
+              <TableRow>
+                <TableCell>Status</TableCell>
+                <TableCell>
+                  {
+                    <h3
+                      className={cn(
+                        `${statusColor(data?.data.status)} font-medium`,
+                      )}
+                    >
+                      <span>{data?.data.status}</span>
+                    </h3>
+                  }
+                </TableCell>
+              </TableRow>
+            </TableFooter>
+          </Table>
         </div>
       </ScrollArea>
       <div className="absolute right-0 top-0 flex flex-col items-end gap-2">

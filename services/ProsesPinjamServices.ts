@@ -93,3 +93,22 @@ export const prosesPeminjamanRuangan = async (
 
   return response.data;
 };
+
+export const prosesPinjamCheckPeminjaman = async (
+  idRuangan: string,
+  date: Date,
+  startHour: string,
+  endHour: string,
+) => {
+  const response = await axiosInstanceToken.post(
+    "/v1/api/proses-pinjam/check-peminjaman",
+    {
+      idRuangan,
+      date,
+      startHour,
+      endHour,
+    },
+  );
+
+  return response.data;
+};

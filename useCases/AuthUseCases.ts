@@ -32,7 +32,7 @@ export const useLoginUser = () => {
         description: "You are now logged in",
       });
       setCookie(data.token);
-      window.location.href = ROUTES_PATH.dashboardUser.home;
+      window.location.href = ROUTES_PATH.dashboard;
     },
     onError: (error: AxiosError) => {
       const errorMessage = error.response?.data as { error: string };

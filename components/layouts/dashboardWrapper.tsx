@@ -1,10 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 import { useShallow } from "zustand/react/shallow";
-import { CircleUser, Menu, Package2 } from "lucide-react";
+import { CircleUser, Home, Menu, Package2 } from "lucide-react";
 
 import useAuthStore from "@/hook/useAuth";
 import { SidebarItem } from "@/types/DashboardTypes";
@@ -33,7 +33,6 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
-  const router = useRouter();
   const pathname = usePathname();
 
   const [data, getUser, logoutHandler] = useAuthStore(
@@ -48,16 +47,6 @@ const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     getUser();
   }, [getUser]);
-
-  useEffect(() => {
-    if (data?.data?.role === "User" && pathname.includes("admin")) {
-      router.push("/dashboard/user");
-    }
-    if (data?.data?.role === "Admin" && pathname.includes("superadmin")) {
-      router.push("/dashboard/admin");
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data, pathname]);
 
   let sidebar = [] as any;
   switch (data?.data?.role) {
@@ -86,6 +75,15 @@ const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
           </div>
           <div className="flex-1">
             <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
+              <Link
+                href={ROUTES_PATH.dashboard}
+                className={`flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary ${
+                  isActive === ROUTES_PATH.dashboard ? "bg-muted" : ""
+                }`}
+              >
+                <Home className="h-4 w-4" />
+                Dashboard
+              </Link>
               {sidebar?.map((item: SidebarItem, index: number) => (
                 <Link
                   key={index}

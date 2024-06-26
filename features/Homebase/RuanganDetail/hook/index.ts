@@ -17,6 +17,7 @@ const useRuanganDetailFeature = () => {
   const router = useRouter();
   const [data] = useAuthStore(useShallow((state) => [state.data]));
 
+  const [checkRuangan, setCheckRuangan] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(
     new Date(),
   );
@@ -48,6 +49,8 @@ const useRuanganDetailFeature = () => {
     setSaranaForm,
     form,
     handleDayClick,
+    checkRuangan,
+    setCheckRuangan,
   };
 };
 

@@ -8,6 +8,7 @@ import { useMutateAllSapras } from "@/useCases/SaprasUseCases";
 import {
   useDetailPeminjamRuangan,
   useProsesPeminjamanRuangan,
+  useProsesPinjamCheckPeminjaman,
 } from "@/useCases/ProsesPinjamUseCases";
 import { ROUTES_PATH } from "@/constants/routes";
 import { BlurImage } from "@/components/common";
@@ -36,6 +37,8 @@ const HomebaseRUanganDetailFeature = ({
     setSaranaForm,
     form,
     handleDayClick,
+    checkRuangan,
+    setCheckRuangan,
   } = useRuanganDetailFeature();
 
   const {
@@ -60,11 +63,24 @@ const HomebaseRUanganDetailFeature = ({
     setIsPinjam,
   );
 
+  const { mutate: mutateCheck, isPending: isPendingCheck } =
+    useProsesPinjamCheckPeminjaman(
+      dataRuangan?.data?.id,
+      form.getValues("date"),
+      form.getValues("startHour"),
+      form.getValues("endHour"),
+      setCheckRuangan,
+    );
+
   const bookedDays = dataRuangan?.data?.DetailPeminjamanRuangan?.map(
     (item: any) => {
       return new Date(item.date);
     },
   );
+
+  const handleCheckKetersediaan = () => {
+    mutateCheck();
+  };
 
   if (isLoadingRuangan)
     return (
@@ -193,6 +209,10 @@ const HomebaseRUanganDetailFeature = ({
               setIsPinjam={setIsPinjam}
               setSaranaForm={setSaranaForm}
               setSaranaSelected={setSaranaSelected}
+              handleCheckKetersediaan={handleCheckKetersediaan}
+              isPendingCheck={isPendingCheck}
+              checkRuangan={checkRuangan}
+              setCheckRuangan={setCheckRuangan}
             />
           </div>
         </div>
