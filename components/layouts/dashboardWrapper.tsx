@@ -35,14 +35,18 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
 
-  const [data, logoutHandler] = useAuthStore(
-    useShallow((state) => [state.data, state.logoutHandler]),
+  const [data, getUser, logoutHandler] = useAuthStore(
+    useShallow((state) => [state.data, state.getUser, state.logoutHandler]),
   );
   const [isActive, setIsActive] = useState("");
 
   useEffect(() => {
     setIsActive(pathname);
   }, [pathname]);
+
+  useEffect(() => {
+    getUser();
+  }, [getUser]);
 
   let sidebar = [] as any;
   switch (data?.data?.role) {

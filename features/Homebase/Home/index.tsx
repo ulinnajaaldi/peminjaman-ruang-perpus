@@ -5,7 +5,7 @@ import React from "react";
 const HomepageFeature = () => {
   return (
     <main>
-      <div className="relative isolate px-6 pt-14 lg:px-8">
+      <div className="relative isolate max-h-[100vh] px-6 pt-14 lg:px-8">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"
@@ -30,7 +30,7 @@ const HomepageFeature = () => {
           </div>
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Peminjaman ruang perpustakaan UMS
+              Peminjaman Ruang Perpustakaan UMS
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
               Sistem peminjaman ruang perpustakaan UMS memudahkan civitas
@@ -39,7 +39,7 @@ const HomepageFeature = () => {
           </div>
         </div>
         <div
-          className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+          className="absolute inset-x-0 top-[calc(100%-12rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-40rem)]"
           aria-hidden="true"
         >
           <div
@@ -51,7 +51,6 @@ const HomepageFeature = () => {
           />
         </div>
       </div>
-      <div className="h-[100vh]"></div>
     </main>
   );
 };
