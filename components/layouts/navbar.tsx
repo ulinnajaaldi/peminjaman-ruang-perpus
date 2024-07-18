@@ -63,15 +63,16 @@ const Navbar = () => {
       <nav className="container">
         <div className="hidden items-center justify-between py-3 md:flex">
           <div className="flex items-center justify-center gap-32">
-            <div>
+            <div className="relative h-full w-[256px]">
               <Image
-                src="/images/perpus-ums-logo.png"
+                src="/images/Logo-UMSLib.png"
                 alt="Perpus UMS Logo"
-                width={80}
-                height={80}
+                width={1000}
+                height={1000}
+                className="h-full w-full object-contain"
               />
             </div>
-            <div className="flex items-center justify-center gap-8">
+            {/* <div className="flex items-center justify-center gap-8">
               {NAVBAR_MENU.map((menu, index) => (
                 <Link
                   key={index}
@@ -82,7 +83,7 @@ const Navbar = () => {
                   {menu.name}
                 </Link>
               ))}
-            </div>
+            </div> */}
           </div>
           {data !== null ? (
             <DropdownMenu>
@@ -125,12 +126,13 @@ const Navbar = () => {
           )}
         </div>
         <div className="flex items-center justify-between py-2 md:hidden">
-          <div>
+          <div className="relative h-full w-[180px]">
             <Image
-              src="/images/perpus-ums-logo.png"
+              src="/images/Logo-UMSLib.png"
               alt="Perpus UMS Logo"
-              width={50}
-              height={50}
+              width={1000}
+              height={1000}
+              className="h-full w-full object-contain"
             />
           </div>
           <Sheet>
@@ -142,17 +144,18 @@ const Navbar = () => {
             <SheetContent side="left">
               <SheetHeader>
                 <SheetTitle>
-                  <div>
+                  <div className="relative h-full w-[162px]">
                     <Image
-                      src="/images/perpus-ums-logo.png"
+                      src="/images/Logo-UMSLib.png"
                       alt="Perpus UMS Logo"
-                      width={100}
-                      height={100}
+                      width={1000}
+                      height={1000}
+                      className="h-full w-full object-contain"
                     />
                   </div>
                 </SheetTitle>
               </SheetHeader>
-              <div className="mt-3 flex flex-col gap-2">
+              {/* <div className="mt-3 flex flex-col gap-2">
                 {NAVBAR_MENU.map((menu, index) => (
                   <Link
                     key={index}
@@ -163,7 +166,7 @@ const Navbar = () => {
                     {menu.name}
                   </Link>
                 ))}
-              </div>
+              </div> */}
               <Button variant="outline" asChild className="mt-5">
                 {data !== null ? (
                   <Link href={ROUTES_PATH.dashboard}>Dashboard</Link>
