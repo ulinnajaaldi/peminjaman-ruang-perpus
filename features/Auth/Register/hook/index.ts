@@ -18,6 +18,7 @@ export const useRegisterFeature = () => {
       email: "",
       role: "User",
       password: "",
+      noHP: "",
     },
   });
 

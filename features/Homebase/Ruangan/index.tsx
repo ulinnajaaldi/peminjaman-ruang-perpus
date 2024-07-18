@@ -28,23 +28,17 @@ const HomebaseRuanganFeature = () => {
   };
 
   return (
-    <main>
-      <section className="container mb-5 mt-20 flex flex-col items-center gap-2">
-        <h1 className="text-center text-3xl font-bold">Daftar Ruangan</h1>
-        <p className="text-center text-gray-600">
-          Daftar ruangan yang tersedia di Perpustakaan UMS untuk dipinjam
+    <section className="mb-10 md:mb-40">
+      <div className="container  flex flex-col items-center gap-2">
+        <h1 className="text-center text-xl font-bold md:text-3xl">
+          Daftar Ruangan
+        </h1>
+        <p className="text-center text-sm text-gray-600 md:text-base">
+          Daftar ruangan yang tersedia di untuk dipinjam
         </p>
-        <div className="mt-3 flex w-full items-center justify-center">
-          <Input
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Cari ruangan..."
-            className="max-w-lg"
-          />
-        </div>
-      </section>
-      <section className="container">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      </div>
+      <div className="container mt-5 md:mt-10">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {isLoading
             ? Array.from({ length: 3 }).map((_, index) => (
                 <div
@@ -115,8 +109,8 @@ const HomebaseRuanganFeature = () => {
             />
           </div>
         )}
-      </section>
-    </main>
+      </div>
+    </section>
   );
 };
 

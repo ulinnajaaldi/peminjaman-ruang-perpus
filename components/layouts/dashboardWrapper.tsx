@@ -109,7 +109,7 @@ const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
               </CardHeader>
               <CardContent className="p-2 pt-0 md:p-4 md:pt-0">
                 <Button size="sm" className="w-full" asChild>
-                  <Link href={ROUTES_PATH.ruangan}>Daftar Ruangan</Link>
+                  <Link href={ROUTES_PATH.home}>Daftar Ruangan</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -162,7 +162,7 @@ const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
                   </CardHeader>
                   <CardContent>
                     <Button size="sm" className="w-full" asChild>
-                      <Link href={ROUTES_PATH.ruangan}>Daftar Ruangan</Link>
+                      <Link href={ROUTES_PATH.home}>Daftar Ruangan</Link>
                     </Button>
                   </CardContent>
                 </Card>
