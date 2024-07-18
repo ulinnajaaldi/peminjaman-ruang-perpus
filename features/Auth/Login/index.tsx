@@ -90,7 +90,7 @@ const LoginFeature = () => {
           className="h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
         />
       </div>
-      <div className="absolute left-0 top-0 m-5">
+      <div className="absolute left-0 top-0 m-4 md:m-5">
         <ActionBackToHome />
       </div>
     </main>

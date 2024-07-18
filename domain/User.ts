@@ -8,6 +8,7 @@ export const UserSchema = z.object({
   email: z.string().email(),
   role: z.enum(["Admin", "User"]),
   password: z.string().min(8),
+  noHP: z.string().min(10).max(15),
 });
 
 export type IUserSchema = z.infer<typeof UserSchema>;

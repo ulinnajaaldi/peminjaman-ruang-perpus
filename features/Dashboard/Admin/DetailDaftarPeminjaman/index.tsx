@@ -89,6 +89,10 @@ const DaftarPeminjamanDetailFeature = ({
                 <TableCell>{data?.data.user.email}</TableCell>
               </TableRow>
               <TableRow>
+                <TableCell className="font-medium">Nomor HP</TableCell>
+                <TableCell>{data?.data.user.noHP}</TableCell>
+              </TableRow>
+              <TableRow>
                 <TableCell className="font-medium">
                   Ruang yang dipinjam
                 </TableCell>

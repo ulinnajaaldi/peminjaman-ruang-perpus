@@ -28,15 +28,15 @@ const RegisterFeature = () => {
       <div className="flex items-center justify-center py-12">
         <div className="mx-auto grid max-w-sm gap-6">
           <div className="grid gap-2 text-center">
-            <h1 className="text-3xl font-bold">Register</h1>
-            <p className="text-balance text-muted-foreground">
+            <h1 className="text-2xl font-bold md:text-3xl">Register</h1>
+            <p className="text-balance text-sm text-muted-foreground md:text-base">
               Masukan informasi anda untuk membuat akun
             </p>
           </div>
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit((values) => mutate(values))}
-              className="space-y-8"
+              className="space-y-8 px-4 md:px-0"
             >
               <div className="grid gap-4">
                 <div className="grid grid-cols-2 gap-4">
@@ -98,6 +98,25 @@ const RegisterFeature = () => {
 
                 <FormField
                   control={form.control}
+                  name="noHP"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>
+                        Nomor HP{" "}
+                        <span className="font-normal">
+                          (Pastikan dapat dihubungi)
+                        </span>
+                      </FormLabel>
+                      <FormControl>
+                        <Input placeholder="+62" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
                   name="password"
                   render={({ field }) => (
                     <FormItem>
@@ -133,7 +152,7 @@ const RegisterFeature = () => {
           className="h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
         />
       </div>
-      <div className="absolute left-0 top-0 m-5">
+      <div className="absolute left-0 top-0 m-4 md:m-5">
         <ActionBackToHome />
       </div>
     </main>
