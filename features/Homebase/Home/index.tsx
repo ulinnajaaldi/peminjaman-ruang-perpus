@@ -1,56 +1,85 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import HeroSection from "./section/HeroSection";
+import HomebaseRuanganFeature from "../Ruangan";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const HomepageFeature = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleOpenDialog = () => {
+    setIsDialogOpen(true);
+  };
+
   return (
     <main>
-      <div className="relative isolate max-h-[100vh] px-6 pt-14 lg:px-8">
-        <div
-          className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-          aria-hidden="true"
-        >
-          <div
-            className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-cyan-400 to-indigo-400 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-            style={{
-              clipPath:
-                "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-            }}
-          />
-        </div>
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-          <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-            <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-              Pinjam ruang perpus sekarang lebih mudah{" "}
-              <a href="#" className="font-semibold text-cyan-600">
-                <span className="absolute inset-0" aria-hidden="true" />
-                Baca lebih lanjut <span aria-hidden="true">&rarr;</span>
-              </a>
+      <HeroSection handleOpenDialog={handleOpenDialog} />
+      <HomebaseRuanganFeature />
+      <Dialog
+        open={isDialogOpen}
+        onOpenChange={(open) => setIsDialogOpen(open)}
+      >
+        <DialogContent className="sm:max-w-4xl">
+          <DialogHeader>
+            <DialogTitle>Alur Peminjaman</DialogTitle>
+            <DialogDescription>
+              Tata Cara Peminjaman Ruang Perpustakaan UMS
+            </DialogDescription>
+          </DialogHeader>
+          <div className="">
+            <div className="">
+              <h2 className="text-sm font-semibold md:text-lg">
+                1. Daftar/Masuk keakun yang sudah didaftarkan
+              </h2>
+            </div>
+            <div className="mt-4">
+              <h2 className="text-sm font-semibold md:text-lg">
+                2. Pilih Ruangan yang ingin dipinjam
+              </h2>
+              <p className="mt-1 text-xs text-gray-600 md:mt-4 md:text-base">
+                Pilih ruangan yang ingin dipinjam pada halaman ruangan.
+              </p>
+            </div>
+            <div className="mt-4">
+              <h2 className="text-sm font-semibold md:text-lg">
+                3. Pilih Jadwal Peminjaman
+              </h2>
+              <p className="mt-1 text-xs text-gray-600 md:mt-4 md:text-base">
+                Pilih jadwal peminjaman ruangan sesuai dengan kebutuhan.
+                Pastikan ruangan yang ingin dipinjam tersedia pada jadwal yang
+                dipilih.
+              </p>
+            </div>
+            <div className="mt-4">
+              <h2 className="text-sm font-semibold md:text-lg">
+                4. Ajukan Peminjaman
+              </h2>
+              <p className="mt-1 text-xs text-gray-600 md:mt-4 md:text-base">
+                Isi form peminjaman ruangan dengan lengkap dan benar. Pastikan
+                data yang diisi sudah sesuai dengan ketentuan yang berlaku.
+              </p>
+            </div>
+            <div className="mt-4">
+              <h2 className="text-sm font-semibold md:text-lg">
+                5. Tunggu Konfirmasi
+              </h2>
+              <p className="mt-1 text-xs text-gray-600 md:mt-4 md:text-base">
+                Tunggu konfirmasi dari admin untuk mengetahui status peminjaman
+                ruangan. Cek berkala email yang digunakan untuk peminjaman
+                ruangan karena akan ada notifikasi yang dikirimkan.
+              </p>
             </div>
           </div>
-          <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Peminjaman Ruang Perpustakaan UMS
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-              Sistem peminjaman ruang perpustakaan UMS memudahkan civitas
-              akademika untuk meminjam ruang perpustakaan secara online.
-            </p>
-          </div>
-        </div>
-        <div
-          className="absolute inset-x-0 top-[calc(100%-12rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-40rem)]"
-          aria-hidden="true"
-        >
-          <div
-            className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-indigo-400 to-cyan-400 opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
-            style={{
-              clipPath:
-                "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-            }}
-          />
-        </div>
-      </div>
+        </DialogContent>
+      </Dialog>
     </main>
   );
 };

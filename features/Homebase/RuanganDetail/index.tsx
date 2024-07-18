@@ -17,6 +17,8 @@ import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
 import useRuanganDetailFeature from "./hook";
 import DialogForm from "./section/DialogForm";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 const HomebaseRUanganDetailFeature = ({
   params,
@@ -98,12 +100,28 @@ const HomebaseRUanganDetailFeature = ({
 
   return (
     <main className="min-h-[90vh]">
-      <h1 className="container py-5 text-3xl font-semibold">
-        {dataRuangan?.data?.name}
-      </h1>
+      <div className="container flex flex-col gap-4 py-3 md:flex-row md:py-5">
+        <Button size="icon" variant="ghost" asChild className="hidden md:flex">
+          <Link href={ROUTES_PATH.home}>
+            <ArrowLeft />
+          </Link>
+        </Button>
+        <Link
+          href={ROUTES_PATH.home}
+          className="flex items-center gap-2 md:hidden"
+        >
+          <div>
+            <ArrowLeft className="h-5 w-5" />
+          </div>
+          <p>Kembali</p>
+        </Link>
+        <h1 className="text-2xl font-semibold md:text-3xl">
+          {dataRuangan?.data?.name}
+        </h1>
+      </div>
       <section className="container mt-2 grid grid-cols-1 gap-5 lg:grid-cols-12">
         <div className="flex flex-col lg:col-span-9">
-          <h2 className="pb-1 font-medium">
+          <h2 className="pb-1 text-sm font-medium md:text-base">
             Kapasitas {dataRuangan?.data?.capacity} orang
           </h2>
           <article
@@ -133,7 +151,7 @@ const HomebaseRUanganDetailFeature = ({
             </div>
           </div>
         </div>
-        <div className="lg:col-span-3 lg:border-l">
+        <div className="mb-10 md:mb-0 lg:col-span-3 lg:border-l">
           <div className="flex flex-col items-center justify-center gap-5">
             <p className="text-center">Jadwal ruangan yang tersedia</p>
             <div>
