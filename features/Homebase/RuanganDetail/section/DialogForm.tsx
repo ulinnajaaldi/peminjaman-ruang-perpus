@@ -74,7 +74,7 @@ const DialogForm: React.FC<DialogForm> = (props) => {
                 mutate(value);
               })}
             >
-              <ScrollArea className="max-h-[80vh]">
+              <ScrollArea className="h-[70vh]">
                 <div className="space-y-4">
                   <FormField
                     control={form.control}

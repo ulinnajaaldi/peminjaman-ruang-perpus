@@ -43,7 +43,7 @@ const HeroSection = ({
         </div>
       </div>
       <div
-        className="absolute -z-10 transform-gpu overflow-hidden blur-3xl "
+        className="absolute right-0 -z-10 transform-gpu overflow-x-hidden blur-3xl"
         aria-hidden="true"
       >
         <div
