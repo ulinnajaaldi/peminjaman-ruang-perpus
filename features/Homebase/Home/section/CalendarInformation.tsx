@@ -16,6 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import useHomeFeature from "../hook";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface ICalendarInformationProps {
   ruangan?: IRuanganSchema[];
@@ -185,39 +186,35 @@ const CalendarInformation: React.FC<ICalendarInformationProps> = (props) => {
           <div className="h-8 rounded-sm bg-gray-300 p-4"></div>
         </div>
       ) : (
-        <aside className="w-full bg-muted p-6 lg:w-80">
-          <div className="mb-6 text-xl font-semibold lg:text-2xl">Jadwal</div>
-          <div className="space-y-4">
-            {selectedItem.length === 0 ? (
-              <div className="text-xs text-muted-foreground lg:text-sm">
-                Tidak ada jadwal
-              </div>
-            ) : (
-              selectedItem?.map((item: any) => (
-                <div key={item.id} className="rounded-lg bg-background p-4">
-                  <div className="text-lg font-semibold">{item.title}</div>
-                  <div className="text-sm text-muted-foreground">
-                    {item.fullname}
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    {item.email}
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    {item.ruangan}
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    {item.startHour} - {item.endHour}
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    {item.people}
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    {item.necessity}
-                  </div>
+        <aside className="w-full rounded-md bg-muted p-6 lg:w-80">
+          <div className="mb-2 text-xl font-semibold lg:text-2xl">Jadwal</div>
+          <ScrollArea className="h-[340px]">
+            <div className="space-y-2">
+              {selectedItem.length === 0 ? (
+                <div className="text-xs text-muted-foreground lg:text-sm">
+                  Tidak ada jadwal
                 </div>
-              ))
-            )}
-          </div>
+              ) : (
+                selectedItem?.map((item: any) => (
+                  <div
+                    key={item.id}
+                    className="rounded-lg border border-green-500 bg-background bg-green-100 p-2"
+                  >
+                    <div className="text-sm font-semibold">{item.ruangan}</div>
+                    <div className="text-xs text-muted-foreground">
+                      {item.date.toLocaleDateString("id-ID", {
+                        weekday: "long",
+                      })}{" "}
+                      {item.startHour} - {item.endHour} | {item.fullname}
+                    </div>
+                    <div className="text-xs text-muted-foreground">
+                      {item.necessity}
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </ScrollArea>
         </aside>
       )}
     </main>
