@@ -20,7 +20,7 @@ const HeroSection = ({
         />
       </div>
       <div className="absolute left-1/2 top-1/2 mx-auto w-[90%] max-w-4xl -translate-x-1/2 -translate-y-1/2 md:w-full md:-translate-y-2/3">
-        <div className="flex sm:mb-8 sm:justify-center">
+        <div className="flex justify-center sm:mb-8">
           <div className="relative rounded-full border-b px-3 py-1 text-center text-xs leading-6 text-gray-600 ring-0 ring-gray-900/10 hover:ring-gray-900/20 md:border-b-0 md:text-start md:text-sm md:ring-1">
             Pinjam ruang perpus sekarang lebih mudah{" "}
             <button

@@ -1,31 +1,29 @@
 "use client";
+
+import React, { useState } from "react";
+import Link from "next/link";
+import { Users } from "lucide-react";
+
+import { IRuanganSchema } from "@/domain/Ruangan";
+import { ROUTES_PATH } from "@/constants/routes";
 import { BlurImage } from "@/components/common";
 import DashboardPagination from "@/components/common/dashboard-pagination";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { ROUTES_PATH } from "@/constants/routes";
-import { IRuanganSchema } from "@/domain/Ruangan";
-import { useGetRuangan } from "@/useCases/RuanganUseCases";
-import { Users } from "lucide-react";
-import Link from "next/link";
-import React, { useState } from "react";
-import { useDebounce } from "use-debounce";
 
-const HomebaseRuanganFeature = () => {
-  const [search, setSearch] = useState("");
-  const [value] = useDebounce(search, 1000);
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(10);
+interface IHomebaseRuanganFeatureProps {
+  data: any;
+  isLoading: boolean;
+  handleNextPage: () => void;
+  handlePrevPage: () => void;
+  limit: number;
+  page: number;
+}
 
-  const { data, isLoading } = useGetRuangan(value, page, limit);
-
-  const handleNextPage = () => {
-    setPage((prev) => prev + 1);
-  };
-
-  const handlePrevPage = () => {
-    setPage((prev) => prev - 1);
-  };
+const HomebaseRuanganFeature: React.FC<IHomebaseRuanganFeatureProps> = (
+  props,
+) => {
+  const { data, isLoading, handleNextPage, handlePrevPage, limit, page } =
+    props;
 
   return (
     <section className="mb-10 md:mb-40">
