@@ -114,6 +114,19 @@ const DaftarPeminjamanDetailFeature = ({
                     day: "numeric",
                     weekday: "long",
                   })}
+                  {data?.data.detailPeminjamanRuangan[0].endDate && (
+                    <>
+                      {" - "}
+                      {new Date(
+                        data?.data.detailPeminjamanRuangan[0].endDate,
+                      ).toLocaleDateString("id-ID", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                        weekday: "long",
+                      })}
+                    </>
+                  )}
                 </TableCell>
               </TableRow>
               <TableRow>

@@ -25,6 +25,7 @@ export const columns: ColumnDef<any>[] = [
     cell: ({ row }) => {
       const datas = row.original;
       let dateValue = new Date(datas.detailPeminjamanRuangan[0].date);
+      let endDateValue = datas.detailPeminjamanRuangan[0].endDate && new Date(datas.detailPeminjamanRuangan[0].endDate);
       return (
         <span>
           {dateValue.toLocaleDateString("id-ID", {
@@ -32,6 +33,11 @@ export const columns: ColumnDef<any>[] = [
             month: "long",
             day: "numeric",
           })}
+          {endDateValue && ` - ${endDateValue.toLocaleDateString("id-ID", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}`}
         </span>
       );
     },

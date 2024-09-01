@@ -32,6 +32,7 @@ import {
 } from "@/components/ui/dialog";
 import type { DialogForm } from "../types";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { before } from "node:test";
 
 const DialogForm: React.FC<DialogForm> = (props) => {
   const {
@@ -52,6 +53,11 @@ const DialogForm: React.FC<DialogForm> = (props) => {
     checkRuangan,
     setCheckRuangan,
   } = props;
+
+  React.useEffect(() => {
+    console.log(form.getValues("date"));
+  }
+  , [form.watch("date")]);
 
   return (
     <Dialog
@@ -113,6 +119,57 @@ const DialogForm: React.FC<DialogForm> = (props) => {
                                 const today = new Date();
                                 today.setHours(0, 0, 0, 0);
                                 return date < today;
+                              }}
+                              onDayClick={() => {
+                                setCheckRuangan(false);
+                              }}
+                              initialFocus
+                            />
+                          </PopoverContent>
+                        </Popover>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="endDate"
+                    render={({ field }) => (
+                      <FormItem className="flex flex-col px-1">
+                        <FormLabel>
+                          Tanggal Peminjaman Akhir (jika lebih 1 hari peminjaman){" "}
+                          {/* <span className="text-red-500">*</span> */}
+                        </FormLabel>
+                        <Popover >
+                          <PopoverTrigger asChild>
+                            <FormControl>
+                              <Button
+                                variant={"outline"}
+                                className={cn(
+                                  "w-full pl-3 text-left font-normal",
+                                  !field.value && "text-muted-foreground",
+                                )}
+                                // disabled={true}
+                              >
+                                {field.value ? (
+                                  format(field.value, "PPP")
+                                ) : (
+                                  <span>Pilih tanggal</span>
+                                )}
+                                <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                              </Button>
+                            </FormControl>
+                          </PopoverTrigger>
+                          <PopoverContent className="w-auto p-0" align="start">
+                            <Calendar
+                              mode="single"
+                              selected={field.value}
+                              onSelect={field.onChange}
+                              disabled={{
+                                // const today = new Date();
+                                // today.setHours(0, 0, 0, 0);
+                                // return date < today;
+                                before: form.getValues("date") ? form.getValues("date") : new Date()
                               }}
                               onDayClick={() => {
                                 setCheckRuangan(false);

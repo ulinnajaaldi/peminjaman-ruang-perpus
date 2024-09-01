@@ -12,6 +12,7 @@ export interface DaftarPeminjaman {
   detailPeminjamanRuangan: {
     ruangan: string;
     date: string;
+    endDate?: string;
     startHour: string;
     endHour: string;
     people: string;

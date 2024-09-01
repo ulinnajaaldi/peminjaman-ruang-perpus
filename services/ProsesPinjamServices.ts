@@ -57,6 +57,7 @@ export const rejectProsesPinjam = async (id: string) => {
 export const detailPeminjamRuang = async (
   date: Date | undefined,
   idRuangan: string,
+  status?: string,
 ) => {
   const response = await axiosInstance.get(`v1/api/detail-peminjam-ruangan`, {
     params: {
@@ -65,6 +66,7 @@ export const detailPeminjamRuang = async (
       seach: "",
       date,
       idRuangan,
+      status,
     },
   });
 

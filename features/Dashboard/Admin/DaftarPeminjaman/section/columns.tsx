@@ -54,6 +54,8 @@ export const columns: ColumnDef<DaftarPeminjaman>[] = [
     cell: ({ row }) => {
       const datas = row.original;
       let dateValue = new Date(datas.detailPeminjamanRuangan[0].date);
+      console.log(datas.detailPeminjamanRuangan[0].endDate);
+      let endDateValue = datas.detailPeminjamanRuangan[0].endDate && new Date(datas.detailPeminjamanRuangan[0].endDate) || null;
       return (
         <span>
           {dateValue.toLocaleDateString("id-ID", {
@@ -61,6 +63,13 @@ export const columns: ColumnDef<DaftarPeminjaman>[] = [
             month: "long",
             day: "numeric",
           })}
+          {endDateValue &&
+            " - " +
+            endDateValue.toLocaleDateString("id-ID", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })} 
         </span>
       );
     },

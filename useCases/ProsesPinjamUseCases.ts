@@ -99,10 +99,11 @@ export const useDetailPeminjamRuangan = (
   dataRuangan: any,
   selectedDate: Date | undefined,
   idRuangan: string,
+  status?: string,
 ) => {
   return useQuery({
     queryKey: ["peminjaman-ruangan", dataRuangan, selectedDate],
-    queryFn: () => detailPeminjamRuang(selectedDate, idRuangan),
+    queryFn: () => detailPeminjamRuang(selectedDate, idRuangan, status),
   });
 };
 
