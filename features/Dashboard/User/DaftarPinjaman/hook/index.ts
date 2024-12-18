@@ -7,6 +7,7 @@ const useDaftarPinjamUserFeature = () => {
   const [selectedData, setSelectedData] = useState<any>(null);
 
   let dateValue = new Date(selectedData?.detailPeminjamanRuangan[0]?.date);
+  let endDateValue = selectedData?.detailPeminjamanRuangan[0]?.endDate && new Date(selectedData?.detailPeminjamanRuangan[0]?.endDate);
 
   return {
     isOpen,
@@ -16,6 +17,7 @@ const useDaftarPinjamUserFeature = () => {
     selectedData,
     setSelectedData,
     dateValue,
+    endDateValue,
   };
 };
 

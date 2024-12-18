@@ -19,6 +19,7 @@ import useRuanganDetailFeature from "./hook";
 import DialogForm from "./section/DialogForm";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { date } from "zod";
 
 const HomebaseRUanganDetailFeature = ({
   params,
@@ -48,7 +49,7 @@ const HomebaseRUanganDetailFeature = ({
     isLoading: isLoadingRuangan,
     isError,
   } = useGetRuanganDetail(params.slug);
-
+  
   const {
     data: dataSarpras,
     isPending: isLoadingSapras,
@@ -56,7 +57,7 @@ const HomebaseRUanganDetailFeature = ({
   } = useMutateAllSapras();
 
   const { data: dataPeminjamanRuang, isLoading: isLoadingPeminjamanRuang } =
-    useDetailPeminjamRuangan(dataRuangan, selectedDate, dataRuangan?.data?.id);
+    useDetailPeminjamRuangan(dataRuangan, selectedDate, dataRuangan?.data?.id, 'Disetujui');
 
   const { mutate, isPending } = useProsesPeminjamanRuangan(
     data?.data?.id,
@@ -74,11 +75,26 @@ const HomebaseRUanganDetailFeature = ({
       setCheckRuangan,
     );
 
-  const bookedDays = dataRuangan?.data?.DetailPeminjamanRuangan?.map(
-    (item: any) => {
-      return new Date(item.date);
-    },
-  );
+  const listBookedDays = () => {
+  const dateArray: Date[] = [];
+  
+  // const bookedDays = dataRuangan?.data?.DetailPeminjamanRuangan?.map(
+  //   (item: any) => {
+  //   },
+    dataRuangan?.data?.DetailPeminjamanRuangan?.forEach((item:any) => {
+      let startDate = new Date(item.date);
+      let endData = item.endDate && new Date(item.endDate);
+      if(item.endDate) {
+        while (startDate <= endData) {
+          dateArray.push(new Date(startDate));
+          startDate.setDate(startDate.getDate() + 1);
+        }
+      }else {
+        dateArray.push(new Date(startDate));
+      }
+    })
+    return dateArray;
+  };
 
   const handleCheckKetersediaan = () => {
     mutateCheck();
@@ -159,7 +175,7 @@ const HomebaseRUanganDetailFeature = ({
                 mode="single"
                 selected={selectedDate}
                 onSelect={setSelectedDate}
-                modifiers={{ booked: bookedDays }}
+                modifiers={{ booked: listBookedDays() }}
                 modifiersStyles={{
                   booked: { border: "2px solid currentColor" },
                 }}

@@ -22,6 +22,7 @@ export const ProsesPinjamAllSchema = z.object({
     z.object({
       ruangan: z.string(),
       date: z.string(),
+      endDate: z.string().optional(),
       startHour: z.string(),
       endHour: z.string(),
       people: z.string(),

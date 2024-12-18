@@ -17,6 +17,7 @@ export const DetailPeminjamanRuanganSchema = z.object({
   idRuangan: z.string().optional(),
   idProsessPinjam: z.string().optional(),
   date: z.date(),
+  endDate: z.date().optional(),
   startHour: z.string(),
   endHour: z.string(),
   people: z.string(),

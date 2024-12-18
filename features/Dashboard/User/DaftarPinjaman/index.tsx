@@ -39,6 +39,7 @@ const UserDaftarPinjamanFeature = () => {
     selectedData,
     setSelectedData,
     dateValue,
+    endDateValue,
   } = useDaftarPinjamUserFeature();
 
   const { data, isLoading, refetch } = useGetDaftarPinjamUser();
@@ -112,6 +113,12 @@ const UserDaftarPinjamanFeature = () => {
                   month: "long",
                   day: "numeric",
                 })}
+                {endDateValue &&
+                  ` - ${endDateValue.toLocaleDateString("id-ID", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}`}
               </p>
               <p
                 className={cn(
